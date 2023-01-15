@@ -1,0 +1,17 @@
+---
+version: "3.8"
+
+services:
+  livebook:
+    image: docker.io/livebook/livebook
+    pull_policy: always
+    restart: always
+    user: ${UID:-1000}
+    environment:
+      LIVEBOOK_IP: "0.0.0.0"
+      LIVEBOOK_PASSWORD: ${LIVEBOOK_PASSWORD:-password1234}
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    volumes:
+      - ./data:/data
